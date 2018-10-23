@@ -1,0 +1,18 @@
+from pyspark.sql import SQLContext
+sqlContext = SQLContext(sc)
+
+credentials_1 = {
+  'password':"""6c8450d74bc5e0934f02a69f08dd66571deeb1c2773830f2d5ce74f264432328""",
+  'custom_url':'https://00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix:6c8450d74bc5e0934f02a69f08dd66571deeb1c2773830f2d5ce74f264432328@00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix.cloudant.com',
+  'username':'00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix',
+  'url':'https://undefined'
+}
+
+cloudantdata = spark.read.format("org.apache.bahir.cloudant")\
+       .option("cloudant.host",credentials_1['custom_url'].split('@')[1])\
+       .option("cloudant.username", credentials_1['username'])\
+       .option("cloudant.password",credentials_1['password'])\
+       .load("anthillgames").createOrReplaceTempView("anthill")
+
+res = spark.sql("select sqrt(sum(X*X)+sum(Y*Y)+sum(Z*Z)) as energy, SENSORID from anthill group by SENSORID order by energy desc")
+res.show()
