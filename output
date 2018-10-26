@@ -2,9 +2,9 @@ from pyspark.sql import SQLContext
 sqlContext = SQLContext(sc)
 
 credentials_1 = {
-  'password':"""6c8450d74bc5e0934f02a69f08dd66571deeb1c2773830f2d5ce74f264432328""",
-  'custom_url':'https://00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix:6c8450d74bc5e0934f02a69f08dd66571deeb1c2773830f2d5ce74f264432328@00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix.cloudant.com',
-  'username':'00945be3-a3a8-4802-abb9-67180c2bdfec-bluemix',
+  'password':"""pw""",
+  'custom_url':'blahblah-bluemix.cloudant.com',
+  'username':'yrusername',
   'url':'https://undefined'
 }
 
